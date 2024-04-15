@@ -65,7 +65,7 @@ def main():
             try:
                 instance = user.user(userIds[i], authKeys[i], secretKeys[i])
                 time.sleep(3)
-                logger.info('登录账号!')
+                logger.info('Logged in!')
                 instance.topLogin()
                 time.sleep(2)
                 instance.topHome()
@@ -75,7 +75,7 @@ def main():
                 time.sleep(2)
 
                 check_blue_apple_cron(instance)
-                logger.info('尝试购买蓝苹果!')
+                logger.info('Blue fruit exchange!')
                 try:
                    instance.buyBlueApple(1)
                    time.sleep(2)
