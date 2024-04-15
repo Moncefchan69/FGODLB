@@ -25,87 +25,87 @@ def topLogin(data: list) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO登录系统 - " + main.fate_region,
-                "description": f"登录成功。列出角色信息.\n\n{messageBonus}",
+                "title": "FGO Login System- " + main.fate_region,
+                "description": f"Successful login.\n\n{messageBonus}",
                 "color": 563455,
                 "fields": [
                     {
-                        "name": "等级",
+                        "name": "Lvl",
                         "value": f"{rewards.level}",
                         "inline": True
                     },
                     {
-                        "name": "呼符", 
+                        "name": "Summon Tickets", 
                         "value": f"{rewards.ticket}",
                         "inline": True
                     },                    
                     {
-                        "name": "圣晶石",
+                        "name": "Saint Quartz",
                         "value": f"{rewards.stone}",
                         "inline": True
                     },
                     {
-                        "name": "圣晶片",
+                        "name": "Saint Quartz Fragments",
                         "value": f"{rewards.sqf01}",
                         "inline": True
                     },
                     {
-                        "name": "金苹果",
+                        "name": "Golden fruit",
                         "value": f"{rewards.goldenfruit}",
                         "inline": True
                     },
                     {
-                        "name": "银苹果",
+                        "name": "Silver Fruit",
                         "value": f"{rewards.silverfruit}",
                         "inline": True
                     },
                     {
-                        "name": "铜苹果",
+                        "name": "Bronze fruit",
                         "value": f"{rewards.bronzefruit}",
                         "inline": True
                     },
                     {
-                        "name": "蓝苹果",
+                        "name": "Blue fruit",
                         "value": f"{rewards.bluebronzefruit}",
                         "inline": True
                     },
                     {
-                        "name": "蓝苹果树苗",
+                        "name": "Blue fruit harvest",
                         "value": f"{rewards.bluebronzesapling}",
                         "inline": True
                     },
                     {
-                        "name": "连续登录天数",
+                        "name": "Login Strike",
                         "value": f"{login.login_days}",
                         "inline": True
                     },
                     {
-                        "name": "累计登录天数",
+                        "name": "Total Logins",
                         "value": f"{login.total_days}",
                         "inline": True
                     },
                     {
-                        "name": "白方块",
+                        "name": "Pure Prisms",
                         "value": f"{rewards.pureprism}",
                         "inline": True
                     },
                     {
-                        "name": "友情点",
+                        "name": "FP",
                         "value": f"{login.total_fp}",
                         "inline": True
                     },
                     {
-                        "name": "今天 获得的友情点",
+                        "name": "FP+",
                         "value": f"+{login.add_fp}",
                         "inline": True
                     },
                     {
-                        "name": "当前最大AP",
+                        "name": "Max AP",
                         "value": f"{login.act_max}",
                         "inline": True
                     },
                     {
-                        "name": "圣杯",
+                        "name": "Holy Grails",
                         "value": f"{rewards.holygrail}",
                         "inline": True
                     },
@@ -133,8 +133,8 @@ def shop(item: str, quantity: str) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO自动购物系统 - " + main.fate_region,
-                "description": f"购买成功.",
+                "title": "FGO Auto Blue Fruit Exchange - " + main.fate_region,
+                "description": f"Exchange success.",
                 "color": 5814783,
                 "fields": [
                     {
