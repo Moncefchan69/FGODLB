@@ -25,12 +25,10 @@ jobs:
         python-version: [3.12]
 
     steps:
-      - name: Install Requirements
-        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt
-
       - name: Gettings files from Repo
         uses: actions/checkout@v4
-
+      - name: Install Requirements
+        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt
       - name: Execute main script 1
         run: |
           python3 main.py
