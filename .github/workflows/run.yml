@@ -6,10 +6,15 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    - cron: "00 03 * * *"
-    - cron: "30 03 * * *"
-    - cron: "30 13 * * *"
-    - cron: "30 17 * * *"
+    - cron: '30 10 * * *'
+    - cron: '01 15 * * *'
+    - cron: '01 16 * * *'
+    - cron: '01 18 * * *'
+    - cron: '01 19 * * *'
+    - cron: '01 03 * * *'
+    - cron: '01 04 * * *'
+    - cron: '01 06 * * *'
+    - cron: '01 07 * * *'
   workflow_dispatch:
 
 jobs:
