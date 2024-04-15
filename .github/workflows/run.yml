@@ -22,14 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.12]
 
     steps:
-      - name: Install Requeriments
-        run: pip install -r https://raw.githubusercontent.com/DNNDHH/F-D-L/master/requirements.txt
+      - name: Install Requirements
+        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt
 
       - name: Gettings files from Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Execute main script 1
         run: |
