@@ -6,8 +6,9 @@ import fgourl
 import user
 import coloredlogs
 import logging
+from datetime import datetime  # Added import for datetime
 
-# Enviroments Variables
+# Environments Variables
 userIds = os.environ['userIds'].split(',')
 authKeys = os.environ['authKeys'].split(',')
 secretKeys = os.environ['secretKeys'].split(',')
@@ -31,13 +32,12 @@ coloredlogs.install(fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
 
 def check_blue_apple_cron(instance):
     if blue_apple_cron:
-
         cron = croniter(blue_apple_cron)
         next_date = cron.get_next(datetime)
         current_date = datetime.now()
         
         if current_date >= next_date:
-            logger.info('Trying buy one blue apple!')
+            logger.info('Trying to buy one Blue Apple!')
             instance.buyBlueApple(1)
             time.sleep(2)
 
@@ -58,7 +58,7 @@ def get_latest_verCode():
 
 def main():
     if userNums == authKeyNums and userNums == secretKeyNums:
-        logger.info('Getting Lastest Assets Info')
+        logger.info('Getting Latest Assets Info')
         fgourl.set_latest_assets()
 
         for i in range(userNums):
@@ -75,7 +75,7 @@ def main():
                 time.sleep(2)
 
                 check_blue_apple_cron(instance)
-                logger.info('Blue fruit exchange!')
+                logger.info('Blue Fruit Exchange!')
                 try:
                    instance.buyBlueApple(1)
                    time.sleep(2)
