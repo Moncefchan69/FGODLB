@@ -16,7 +16,7 @@ def topLogin(data: list) -> None:
     if bonus != "No Bonus":
         messageBonus += f"__{bonus.message}__{nl}```{nl.join(bonus.items)}```"
 
-        if bonus.bonus_name != None:
+        if bonus.bonus_name is not None:
             messageBonus += f"{nl}__{bonus.bonus_name}__{nl}{bonus.bonus_detail}{nl}```{nl.join(bonus.bonus_camp_items)}```"
 
         messageBonus += "\n"
@@ -25,20 +25,20 @@ def topLogin(data: list) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO Login System- " + main.fate_region,
-                "description": f"Successful login.\n\n{messageBonus}",
+                "title": "FGO Login System - " + main.fate_region,
+                "description": f"Login successful. Listing character information.\n\n{messageBonus}",
                 "color": 563455,
                 "fields": [
                     {
-                        "name": "Lvl",
+                        "name": "Level",
                         "value": f"{rewards.level}",
                         "inline": True
                     },
                     {
-                        "name": "Summon Tickets", 
+                        "name": "Summon Tickets",
                         "value": f"{rewards.ticket}",
                         "inline": True
-                    },                    
+                    },
                     {
                         "name": "Saint Quartz",
                         "value": f"{rewards.stone}",
@@ -50,66 +50,65 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Golden fruit",
+                        "name": "Golden Apples",
                         "value": f"{rewards.goldenfruit}",
                         "inline": True
                     },
                     {
-                        "name": "Silver Fruit",
+                        "name": "Silver Apples",
                         "value": f"{rewards.silverfruit}",
                         "inline": True
                     },
                     {
-                        "name": "Bronze fruit",
+                        "name": "Bronze Apples",
                         "value": f"{rewards.bronzefruit}",
                         "inline": True
                     },
                     {
-                        "name": "Blue fruit",
+                        "name": "Blue Apples",
                         "value": f"{rewards.bluebronzefruit}",
                         "inline": True
                     },
                     {
-                        "name": "Blue fruit harvest",
+                        "name": "Blue Apple Saplings",
                         "value": f"{rewards.bluebronzesapling}",
                         "inline": True
                     },
                     {
-                        "name": "Login Strike",
+                        "name": "Login Streak",
                         "value": f"{login.login_days}",
                         "inline": True
                     },
                     {
-                        "name": "Total Logins",
+                        "name": "Total Login Days",
                         "value": f"{login.total_days}",
                         "inline": True
                     },
                     {
-                        "name": "Pure Prisms",
+                        "name": "White Cubes",
                         "value": f"{rewards.pureprism}",
                         "inline": True
                     },
                     {
-                        "name": "FP",
+                        "name": "Friendship Points",
                         "value": f"{login.total_fp}",
                         "inline": True
                     },
                     {
-                        "name": "FP+",
+                        "name": "Friendship Points Gained Today",
                         "value": f"+{login.add_fp}",
                         "inline": True
                     },
                     {
-                        "name": "Max AP",
+                        "name": "Current Maximum AP",
                         "value": f"{login.act_max}",
                         "inline": True
                     },
                     {
-                        "name": "Holy Grails",
+                        "name": "Holy Grail",
                         "value": f"{rewards.holygrail}",
                         "inline": True
                     },
-                    
                 ],
                 "thumbnail": {
                     "url": "https://www.fate-go.jp/manga_fgo/images/commnet_chara01.png"
@@ -128,18 +127,18 @@ def topLogin(data: list) -> None:
 
 def shop(item: str, quantity: str) -> None:
     endpoint = main.webhook_discord_url
-    
+
     jsonData = {
         "content": None,
         "embeds": [
             {
-                "title": "FGO Auto Blue Fruit Exchange - " + main.fate_region,
-                "description": f"Exchange success.",
+                "title": "FGO Automatic Shopping System - " + main.fate_region,
+                "description": f"Purchase successful.",
                 "color": 5814783,
                 "fields": [
                     {
-                        "name": f"商店",
-                        "value": f"消费 {40 * quantity}Ap 购买 {quantity}x {item}",
+                        "name": f"Shop",
+                        "value": f"Spent {40 * quantity} AP to buy {quantity}x {item}",
                         "inline": False
                     }
                 ],
@@ -164,7 +163,7 @@ def drawFP(servants, missions) -> None:
     message_mission = ""
     message_servant = ""
 
-    if (len(servants) > 0):
+    if len(servants) > 0:
         servants_atlas = requests.get(
             f"https://api.atlasacademy.io/export/JP/basic_svt.json").json()
 
@@ -174,7 +173,7 @@ def drawFP(servants, missions) -> None:
             svt = svt_dict[servant.objectId]
             message_servant += f"`{svt['name']}` "
 
-    if(len(missions) > 0):
+    if len(missions) > 0:
         for mission in missions:
             message_mission += f"__{mission.message}__\n{mission.progressTo}/{mission.condition}\n"
 
@@ -182,12 +181,12 @@ def drawFP(servants, missions) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO自动抽卡系统 - " + main.fate_region,
-                "description": f"完成当日免费友情抽卡。列出抽卡结果.\n\n{message_mission}",
+                "title": "FGO Automatic Summoning System - " + main.fate_region,
+                "description": f"Complete free friend summon for the day. Listing summon results.\n\n{message_mission}",
                 "color": 5750876,
                 "fields": [
                     {
-                        "name": "友情卡池",
+                        "name": "Friend Point Pool",
                         "value": f"{message_servant}",
                         "inline": False
                     }
