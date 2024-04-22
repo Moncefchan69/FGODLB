@@ -2,23 +2,25 @@ import os
 import requests
 import time
 import json
-from datetime import datetime
+import fgourl
 import user
 import coloredlogs
 import logging
+from croniter import croniter
+from datetime import datetime
 
-# Enviroments Variables
+# Environment Variables
 userIds = os.environ['userIds'].split(',')
 authKeys = os.environ['authKeys'].split(',')
 secretKeys = os.environ['secretKeys'].split(',')
 fate_region = os.environ['fateRegion']
 webhook_discord_url = os.environ['webhookDiscord']
+blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
 
 UA = os.environ['UserAgent']
 
 if UA:
-    # Assuming fgourl is not used for UserAgent configuration
-    pass
+    fgourl.user_agent_ = UA
 
 userNums = len(userIds)
 authKeyNums = len(authKeys)
@@ -29,8 +31,15 @@ coloredlogs.install(fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
 
 
 def check_blue_apple_cron(instance):
-    # Remove code related to bluebroncefruit
-    pass
+    if blue_apple_cron:
+        cron = croniter(blue_apple_cron)
+        next_date = cron.get_next(datetime)
+        current_date = datetime.now()
+
+        if current_date >= next_date:
+            logger.info('Trying to buy one blue apple!')
+            instance.buyBlueApple(1)
+            time.sleep(2)
 
 
 def get_latest_verCode():
@@ -50,6 +59,7 @@ def get_latest_verCode():
 def main():
     if userNums == authKeyNums and userNums == secretKeyNums:
         logger.info('Getting Latest Assets Info')
+        fgourl.set_latest_assets()
 
         for i in range(userNums):
             try:
@@ -62,8 +72,8 @@ def main():
                 time.sleep(2)
                 try:
                     time.sleep(2)
-                    logger.info('Starting Friend Point summoning!!')
-                    for _ in range(1):  # You can define how many times to automatically draw FP summon each login (default is 1 time)
+                    logger.info('Starting friend point summon!')
+                    for _ in range(1):  # Define how many times to summon friend points (default 1 time)
                         instance.drawFP()
                         time.sleep(4)
                 except Exception as ex:
