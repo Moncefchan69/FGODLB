@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Checking requirements
-        run: pip install https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt --upgrade
+        run: pip install "https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt" --upgrade
       
       - name: Fetching repository
         uses: actions/checkout@v4
