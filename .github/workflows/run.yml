@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Checking requirements
         run: |
-          python3 -m pip install -r croniter json5 httpx lxml requests py3rijndael msgpack coloredlogs --upgrade
+          python3 -m pip install croniter json5 httpx lxml requests py3rijndael msgpack coloredlogs --upgrade
       - name: Fetching repository
         uses: actions/checkout@v4
 
