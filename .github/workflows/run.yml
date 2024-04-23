@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Checking requirements
         run: |
-          python3 -m pip install -r requirements.txt --upgrade
+          python3 -m pip install -r "requirements.txt" --upgrade
 
       - name: Fetching repository
         uses: actions/checkout@v4
