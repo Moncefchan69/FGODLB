@@ -3,9 +3,9 @@ name: FGO Login System
 on:
   workflow_dispatch:
   push:
-    branches: main
+    branches: "main"
   pull_request:
-    branches: main
+    branches: "main"
   schedule:
     - cron: '30 10 * * *'
     - cron: '01 15 * * *'
@@ -25,10 +25,10 @@ jobs:
         python-version: [3.11]
 
     steps:
-      - name: Checking requirements
-        run: pip install "https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt" --upgrade
+      - name: Check requirements
+        run: pip install https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt
       
-      - name: Fetching repository
+      - name: Repository checkout
         uses: actions/checkout@v4
 
       - name: Execute script 1
