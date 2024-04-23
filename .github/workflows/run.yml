@@ -25,12 +25,12 @@ jobs:
         python-version: [3.11]
 
     steps:
-     - name: Check requirements
-       run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
-      
-      - name: Repository checkout
+      - name: Check requirements
+        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
+
+      - name: Fetch files from repository
         uses: actions/checkout@v4
-        
+
       - name: Execute script 1
         run: |
           python3 main.py
