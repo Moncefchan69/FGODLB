@@ -26,14 +26,15 @@ jobs:
 
     steps:
       - name: Checking requirements
-        run: python -m pip install -r requirements.txt --upgrade
+        run: |
+          python3 -m pip install -r requirements.txt --upgrade
 
       - name: Fetching repository
         uses: actions/checkout@v4
 
       - name: Execute script 1
         run: |
-          python main.py
+          python3 main.py
         env:
           userIds: ${{ secrets.GAME_USERIDS }}
           authKeys: ${{ secrets.GAME_AUTHKEYS }}
