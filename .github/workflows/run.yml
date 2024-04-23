@@ -26,8 +26,8 @@ jobs:
 
     steps:
       - name: Checking requirements
-        run: |
-          python3 -m pip install croniter json5 httpx lxml requests py3rijndael msgpack coloredlogs --upgrade
+        run: pip install https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt --upgrade
+      
       - name: Fetching repository
         uses: actions/checkout@v4
 
@@ -44,7 +44,7 @@ jobs:
 
       - name: Execute script 2
         run: |
-          python main02.py
+          python3 main02.py
         env:
           userIds: ${{ secrets.GAME_USERIDS }}
           authKeys: ${{ secrets.GAME_AUTHKEYS }}
