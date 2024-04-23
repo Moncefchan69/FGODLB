@@ -1,10 +1,12 @@
 name: FGO Login System
 
 on:
+  workflow_dispatch:
+				branches: main
   push:
-    branches: ["main"]
+    branches: main
   pull_request:
-    branches: ["main"]
+    branches: main
   schedule:
     - cron: '30 10 * * *'
     - cron: '01 15 * * *'
@@ -15,23 +17,24 @@ on:
     - cron: '01 04 * * *'
     - cron: '01 06 * * *'
     - cron: '01 07 * * *'
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.12]
+        python-version: [3.11]
 
     steps:
-      - name: Gettings files from Repo
+      - name: Checking requirements
+        run: pip install -r requirements.txt
+
+      - name: Fetching repository
         uses: actions/checkout@v4
-      - name: Install Requirements
-        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLBJP/main/requirements.txt
-      - name: Execute main script 1
+
+      - name: Execute script 1
         run: |
-          python3 main.py
+          python main.py
         env:
           userIds: ${{ secrets.GAME_USERIDS }}
           authKeys: ${{ secrets.GAME_AUTHKEYS }}
@@ -40,9 +43,9 @@ jobs:
           fateRegion: ${{ secrets.GAME_REGION }}
           webhookDiscord: ${{ secrets.DISCORD_WEBHOOK }}
 
-      - name: Execute main script 2
+      - name: Execute script 2
         run: |
-          python3 main02.py
+          python main02.py
         env:
           userIds: ${{ secrets.GAME_USERIDS }}
           authKeys: ${{ secrets.GAME_AUTHKEYS }}
