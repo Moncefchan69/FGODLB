@@ -62,7 +62,7 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Golden Fruit",
+                        "name": "Gold Fruit",
                         "value": f"{rewards.goldenfruit}",
                         "inline": True
                     },
@@ -82,7 +82,7 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Blue Apple Saplings",
+                        "name": "Blue Fruit Saplings",
                         "value": f"{rewards.bluebronzesapling}",
                         "inline": True
                     },
@@ -97,7 +97,7 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "White Prisms",
+                        "name": "White Prism",
                         "value": f"{rewards.pureprism}",
                         "inline": True
                     },
@@ -123,7 +123,7 @@ def topLogin(data: list) -> None:
                     },
                 ],
                 "thumbnail": {
-                    "url": "https://www.fate-go.jp/manga_fgo/images/commnet_chara01.png"
+                    "url": "https://static.atlasacademy.io/JP/External/FGOPoker/167.png"
                 }
             }
         ],
@@ -177,7 +177,7 @@ def drawFP(servants, missions) -> None:
 
     if (len(servants) > 0):
         servants_atlas = requests.get(
-            f"https://api.atlasacademy.io/export/JP/basic_svt_lang_en.json").json()
+            f"https://api.atlasacademy.io/export/NA/basic_svt.json").json()
 
         svt_dict = {svt["id"]: svt for svt in servants_atlas}
 
@@ -193,7 +193,7 @@ def drawFP(servants, missions) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO Automatic Pull Summoning System - " + main.fate_region,
+                "title": "FGO Automayic Summoning System - " + main.fate_region,
                 "description": f"Daily Free FP Summon.\n\n{message_mission}",
                 "color": 5750876,
                 "fields": [
