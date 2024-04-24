@@ -58,7 +58,7 @@ def get_latest_verCode():
 
 def main():
     if userNums == authKeyNums and userNums == secretKeyNums:
-        logger.info('Updating Game Data')
+        logger.info('Fetching Game Data')
         fgourl.set_latest_assets()
 
         for i in range(userNums):
