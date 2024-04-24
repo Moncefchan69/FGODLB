@@ -1,6 +1,7 @@
 import main
 import requests
 import user
+import json
 
 
 def topLogin(data: list) -> None:
@@ -9,6 +10,12 @@ def topLogin(data: list) -> None:
     rewards: user.Rewards = data[0]
     login: user.Login = data[1]
     bonus: user.Bonus or str = data[2]
+    
+    with open('login.json', 'r', encoding='utf-8')as f:
+        data22 = json.load(f)
+
+        name1 = data22['cache']['replaced']['userGame'][0]['name']
+        fpids1 = data22['cache']['replaced']['userGame'][0]['friendCode']
 
     messageBonus = ''
     nl = '\n'
@@ -26,9 +33,14 @@ def topLogin(data: list) -> None:
         "embeds": [
             {
                 "title": "FGO Login System - " + main.fate_region,
-                "description": f"Login successful. Listing character information.\n\n{messageBonus}",
+                "description": f"Login successful.\n\n{messageBonus}",
                 "color": 563455,
                 "fields": [
+                    {
+                        "name": "ID",
+                        "value": f"{fpids1}",
+                        "inline": True
+                    },
                     {
                         "name": "Level",
                         "value": f"{rewards.level}",
@@ -132,8 +144,8 @@ def shop(item: str, quantity: str) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO Automatic Shopping System - " + main.fate_region,
-                "description": f"Purchase successful.",
+                "title": "FGO Blue Fruit Exchange - " + main.fate_region,
+                "description": f"Received Blue Fruit.",
                 "color": 5814783,
                 "fields": [
                     {
@@ -163,7 +175,7 @@ def drawFP(servants, missions) -> None:
     message_mission = ""
     message_servant = ""
 
-    if len(servants) > 0:
+    if (len(servants) > 0):
         servants_atlas = requests.get(
             f"https://api.atlasacademy.io/export/JP/basic_svt_lang_en.json").json()
 
@@ -173,7 +185,7 @@ def drawFP(servants, missions) -> None:
             svt = svt_dict[servant.objectId]
             message_servant += f"`{svt['name']}` "
 
-    if len(missions) > 0:
+    if(len(missions) > 0):
         for mission in missions:
             message_mission += f"__{mission.message}__\n{mission.progressTo}/{mission.condition}\n"
 
@@ -182,11 +194,11 @@ def drawFP(servants, missions) -> None:
         "embeds": [
             {
                 "title": "FGO Automatic Summoning System - " + main.fate_region,
-                "description": f"Complete free friend summon for the day. Listing summon results.\n\n{message_mission}",
+                "description": f"Daily FP Free FP Summion.\n\n{message_mission}",
                 "color": 5750876,
                 "fields": [
                     {
-                        "name": "Friend Point Pool",
+                        "name": "Gacha Results",
                         "value": f"{message_servant}",
                         "inline": False
                     }
