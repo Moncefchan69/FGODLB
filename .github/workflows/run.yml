@@ -1,11 +1,11 @@
-name: FGO Login System
+name: : FGO Login System
 
 on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ 'main]
+    branches: [ "main" ]
   schedule:
     - cron: '30 10 * * *'
     - cron: '01 15 * * *'
@@ -18,12 +18,16 @@ on:
     - cron: '01 07 * * *'
 
 jobs:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
         python-version: [3.11]
 
     steps:
       - name: Check requirements
-        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
+        run: |
+          python3 -m pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
 
       - name: Fetch files from repository
         uses: actions/checkout@v4
