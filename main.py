@@ -37,7 +37,7 @@ def check_blue_apple_cron(instance):
         current_date = datetime.now()
 
         if current_date >= next_date:
-            logger.info('Trying to buy one blue apple!')
+            logger.info('Exchanging Blue Fruit!')
             instance.buyBlueApple(1)
             time.sleep(2)
 
@@ -48,7 +48,7 @@ def get_latest_verCode():
     if fate_region == "NA":
         endpoint += "https://raw.githubusercontent.com/O-Isaac/FGO-VerCode-extractor/NA/VerCode.json"
     else:
-        endpoint += "https://raw.githubusercontent.com/DNNDHH/FGO-VerCode-extractor/JP/VerCode.json"
+        endpoint += "https://raw.githubusercontent.com/O-Isaac/FGO-VerCode-extractor/JP/VerCode.json"
 
     response = requests.get(endpoint).text
     response_data = json.loads(response)
@@ -58,14 +58,14 @@ def get_latest_verCode():
 
 def main():
     if userNums == authKeyNums and userNums == secretKeyNums:
-        logger.info('Getting Latest Assets Info')
+        logger.info('Updating Game Data')
         fgourl.set_latest_assets()
 
         for i in range(userNums):
             try:
                 instance = user.user(userIds[i], authKeys[i], secretKeys[i])
                 time.sleep(3)
-                logger.info('Logging in!')
+                logger.info('Login in...')
                 instance.topLogin()
                 time.sleep(2)
                 instance.topHome()
@@ -75,7 +75,7 @@ def main():
                 time.sleep(2)
 
                 check_blue_apple_cron(instance)
-                logger.info('Trying to buy blue apples!')
+                logger.info('Exchanging Blue Fruit!')
                 try:
                     instance.buyBlueApple(1)
                     time.sleep(2)
