@@ -1,4 +1,4 @@
-name: : FGO Login System
+name: FGO Login System
 
 on:
   workflow_dispatch:
