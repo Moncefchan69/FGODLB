@@ -62,22 +62,22 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Golden Apples",
+                        "name": "Golden Fruit",
                         "value": f"{rewards.goldenfruit}",
                         "inline": True
                     },
                     {
-                        "name": "Silver Apples",
+                        "name": "Silver Fruit",
                         "value": f"{rewards.silverfruit}",
                         "inline": True
                     },
                     {
-                        "name": "Bronze Apples",
+                        "name": "Copper Fruit",
                         "value": f"{rewards.bronzefruit}",
                         "inline": True
                     },
                     {
-                        "name": "Blue Apples",
+                        "name": "Blue Fruit",
                         "value": f"{rewards.bluebronzefruit}",
                         "inline": True
                     },
@@ -97,17 +97,17 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "White Cubes",
+                        "name": "White Prisms",
                         "value": f"{rewards.pureprism}",
                         "inline": True
                     },
                     {
-                        "name": "Friendship Points",
+                        "name": "FP",
                         "value": f"{login.total_fp}",
                         "inline": True
                     },
                     {
-                        "name": "Friendship Points Gained Today",
+                        "name": "Gained FP",
                         "value": f"+{login.add_fp}",
                         "inline": True
                     },
