@@ -33,7 +33,7 @@ def topLogin(data: list) -> None:
         "embeds": [
             {
                 "title": "FGO Login System - " + main.fate_region,
-                "description": f"Login successful.\n\n{messageBonus}",
+                "description": f"Scheluded Login Fate/Grand Order.l.\n\n{messageBonus}",
                 "color": 563455,
                 "fields": [
                     {
