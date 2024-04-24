@@ -193,7 +193,7 @@ def drawFP(servants, missions) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO Automayic Summoning System - " + main.fate_region,
+                "title": "FGO Automatic Summoning System - " + main.fate_region,
                 "description": f"Daily Free FP Summon.\n\n{message_mission}",
                 "color": 5750876,
                 "fields": [
