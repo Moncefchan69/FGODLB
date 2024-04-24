@@ -33,7 +33,7 @@ def topLogin(data: list) -> None:
         "embeds": [
             {
                 "title": "FGO Login System - " + main.fate_region,
-                "description": f"Scheluded Login Fate/Grand Order.l.\n\n{messageBonus}",
+                "description": f"Scheluded Login Fate/Grand Order.\n\n{messageBonus}",
                 "color": 563455,
                 "fields": [
                     {
@@ -123,7 +123,7 @@ def topLogin(data: list) -> None:
                     },
                 ],
                 "thumbnail": {
-                    "url": "https://static.atlasacademy.io/JP/External/FGOPoker/167.png"
+                    "url": "https://static.atlasacademy.io/JP/External/FGOPoker/316.png"
                 }
             }
         ],
@@ -177,7 +177,7 @@ def drawFP(servants, missions) -> None:
 
     if (len(servants) > 0):
         servants_atlas = requests.get(
-            f"https://api.atlasacademy.io/export/NA/basic_svt.json").json()
+            f"https://api.atlasacademy.io/export/JP/basic_svt_lang_en.json").json()
 
         svt_dict = {svt["id"]: svt for svt in servants_atlas}
 
