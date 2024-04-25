@@ -62,43 +62,17 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Gold/Silver/Bronze/Blue Fruit",
-                        "value": f"{rewards.goldenfruit}/{rewards.silverfruit}/{rewards.bronzefruit}/{rewards.bluebronzefruit}",
-                        "inline": True
-                    },
-                    {
-                        "name": "Gold Fruit",
-                        "value": f"{rewards.goldenfruit}",
-                        "inline": True
-                    },
-                    {
-                        "name": "Silver Fruit",
-                        "value": f"{rewards.silverfruit}",
-                        "inline": True
-                    },
-                    {
-                        "name": "Copper Fruit",
-                        "value": f"{rewards.bronzefruit}",
-                        "inline": True
-                    },
-                    {
-                        "name": "Blue Fruit",
-                        "value": f"{rewards.bluebronzefruit}",
-                        "inline": True
-                    },
+                        "name": "Gold / Silver / Bronze / Blue Fruit",
+                        "value": f"{rewards.goldenfruit} / {rewards.silverfruit} / {rewards.bronzefruit} / {rewards.bluebronzefruit}",
+                        "inline": 
                     {
                         "name": "Blue Fruit Saplings",
                         "value": f"{rewards.bluebronzesapling}",
                         "inline": True
                     },
                     {
-                        "name": "Login Streak",
-                        "value": f"{login.login_days}",
-                        "inline": True
-                    },
-                    {
-                        "name": "Total Login Days",
-                        "value": f"{login.total_days}",
+                        "name": "Daily Login Streak / Total Login Days",
+                        "value": f"{login.login_days} / {login.total_days}",
                         "inline": True
                     },
                     {
