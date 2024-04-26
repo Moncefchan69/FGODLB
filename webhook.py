@@ -130,7 +130,7 @@ def shop(item: str, quantity: str) -> None:
                 "fields": [
                     {
                         "name": f"Details",
-                        "value": f"-{40 * quantity} AP for {item}x ",
+                        "value": f"-{40 * quantity} AP for {1 * item}x ",
                         "inline": False
                     }
                 ],
