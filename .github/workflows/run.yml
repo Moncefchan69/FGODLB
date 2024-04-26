@@ -18,16 +18,18 @@ on:
     - cron: '01 07 * * *'
 
 jobs:
-  run_scripts:
+  build:
     runs-on: ubuntu-latest
-        python-version: '3.11'
+    strategy:
+      matrix:
+        python-version: [3.11]
 
     steps:
       - name: Set time zone
         run: |
           sudo timedatectl set-timezone 'America/Mexico_City'
-          
-      - uses: actions/checkout@v4
+        
+        uses: actions/checkout@v4
       
       - name: Install dependencies
         run: |
