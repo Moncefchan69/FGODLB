@@ -1,18 +1,19 @@
+from croniter import croniter
 from datetime import datetime, timedelta, timezone
 
-tz_utc_8 = timezone(timedelta(hours=8))
+tz_utc_-6 = timezone(timedelta(hours=-6))
 
 
 def GetNowTimeHour():
-    return datetime.now(tz=tz_utc_8).hour
+    return datetime.now(tz=tz_utc_-6).hour
 
 
 def GetNowTime():
-    return datetime.now(tz=tz_utc_8)
+    return datetime.now(tz=tz_utc_-6)
 
 
 def GetFormattedNowTime():
-    return datetime.now(tz=tz_utc_8).strftime('%Y-%m-%d %H:%M:%S')
+    return datetime.now(tz=tz_utc_-6).strftime('%Y-%m-%d %H:%M:%S')
 
 
 def GetTimeStamp():
@@ -24,4 +25,4 @@ def TimeStampToString(timestamp):
 
 
 def GetNowTimeFileName():
-    return datetime.now(tz=tz_utc_8).strftime('%Y/%m/%d.log')
+    return datetime.now(tz=tz_utc_-6).strftime('%Y/%m/%d.log')
