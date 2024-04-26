@@ -29,11 +29,11 @@ jobs:
         run: |
           sudo timedatectl set-timezone 'Asia/Tokyo'
         
-      - uses: actions/checkout@v4
+      - name: Syncing repository 
+        uses: actions/checkout@v4
       
       - name: Install dependencies
-        run: |
-          pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
+        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
 
       - name: Execute script 1
         run: |
