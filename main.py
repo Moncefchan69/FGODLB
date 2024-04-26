@@ -6,8 +6,6 @@ import fgourl
 import user
 import coloredlogs
 import logging
-from croniter import croniter
-from datetime import datetime
 
 # Environment Variables
 userIds = os.environ['userIds'].split(',')
