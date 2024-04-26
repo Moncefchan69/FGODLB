@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Set time zone
         run: |
-        sudo timedatectl set-timezone 'America_Mexico/City'
+          sudo timedatectl set-timezone 'America_Mexico/City'
 
       - name: Set up Python
         uses: actions/setup-python@v3
