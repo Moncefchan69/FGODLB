@@ -7,15 +7,12 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '30 10 * * *'
-    - cron: '01 15 * * *'
-    - cron: '01 16 * * *'
-    - cron: '01 18 * * *'
-    - cron: '01 19 * * *'
-    - cron: '01 03 * * *'
-    - cron: '01 04 * * *'
-    - cron: '01 06 * * *'
-    - cron: '01 07 * * *'
+    - cron: "15 07,19 * * *"
+    - cron: "15 08,20 * * *"
+    - cron: "15 12,00 * * *"
+    - cron: "15 01,13 * * *"
+    - cron: "15 02,14 * * *"
+    - cron: "15 06,18 * * *"
 
 jobs:
   build:
@@ -24,12 +21,15 @@ jobs:
       matrix:
         python-version: [3.11]
 
-    steps:    
-      - name: Syncing repository 
+    steps:
+      - run: pip install -r https://raw.githubusercontent.cmom/xdeadboy666x/FGODLB/main/requirements.txt
+        
+      - name: Fetch repository files
         uses: actions/checkout@v4
-      
-      - name: Install dependencies
-        run: pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
+
+      - name: Set Time Zone
+        run: |
+           sudo timedatectl set-timezone 'America/Mexico_City'
 
       - name: Execute script 1
         run: |
