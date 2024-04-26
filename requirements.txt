@@ -1,4 +1,3 @@
-#utf-8
 json5
 httpx
 lxml
