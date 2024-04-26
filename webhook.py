@@ -62,8 +62,8 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Fruits",
-                        "value": f"Gold Fruit:{rewards.goldenfruit}/ Silver Fruit:{rewards.silverfruit}/ Bronze Fruit:{rewards.bronzefruit}/ Blue Fruit:{rewards.bluebronzefruit}",
+                        "name": "Gold / Silver / Bronce / Blue Fruit",
+                        "value": f"{rewards.goldenfruit} / {rewards.silverfruit} / {rewards.bronzefruit} / {rewards.bluebronzefruit}",
                         "inline": True
                     },
                     {
@@ -73,7 +73,7 @@ def topLogin(data: list) -> None:
                     },
                     {
                         "name": "Total Login Days",
-                        "value": f"{login.login_days} Days / {login.total_days} Days",
+                        "value": f"{login.login_days} days / {login.total_days} days",
                         "inline": True
                     },
                     {
@@ -130,7 +130,7 @@ def shop(item: str, quantity: str) -> None:
                 "fields": [
                     {
                         "name": f"Details",
-                        "value": f"Minus {40 * quantity} AP in exchange for 1x Blue Fruit",
+                        "value": f"-{40 * quantity} AP for {item}x ",
                         "inline": False
                     }
                 ],
