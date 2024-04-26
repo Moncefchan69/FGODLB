@@ -22,7 +22,8 @@ jobs:
         python-version: [3.11]
 
     steps:
-      - run: pip install -r https://raw.githubusercontent.cmom/xdeadboy666x/FGODLB/main/requirements.txt
+      - name: Install dependencies
+        run: pip install -r https://raw.githubusercontent.cmom/xdeadboy666x/FGODLB/main/requirements.txt
         
       - name: Fetch repository files
         uses: actions/checkout@v4
