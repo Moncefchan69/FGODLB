@@ -62,11 +62,6 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Gold / Silver / Bronce / Blue Fruit",
-                        "value": f"{rewards.goldenfruit} / {rewards.silverfruit} / {rewards.bronzefruit} / {rewards.bluebronzefruit}",
-                        "inline": True
-                    },
-                    {
                         "name": "Blue Fruit Saplings",
                         "value": f"{rewards.bluebronzesapling}",
                         "inline": True
