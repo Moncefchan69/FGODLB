@@ -62,9 +62,9 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Gold / Silver / Bronze / Blue Fruit",
-                        "value": f"{rewards.goldenfruit} / {rewards.silverfruit} / {rewards.bronzefruit} / {rewards.bluebronzefruit}",
-                        "inline": 
+                        "name": "Fruits",
+                        "value": f"Gold Fruit:{rewards.goldenfruit}/ Silver Fruit:{rewards.silverfruit}/ Bronze Fruit:{rewards.bronzefruit}/ Blue Fruit:{rewards.blueebronzefruit}",
+                        "inline": True
                     },
                     {
                         "name": "Blue Fruit Saplings",
@@ -72,8 +72,8 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "Daily Login Streak / Total Login Days",
-                        "value": f"{login.login_days} / {login.total_days}",
+                        "name": "Total Login Days",
+                        "value": f"Daily Login Streak of{login.login_days}Days /{login.total_days}Total Login Days",
                         "inline": True
                     },
                     {
@@ -82,7 +82,7 @@ def topLogin(data: list) -> None:
                         "inline": True
                     },
                     {
-                        "name": "FP",
+                        "name": "Total FP",
                         "value": f"{login.total_fp}",
                         "inline": True
                     },
@@ -103,7 +103,7 @@ def topLogin(data: list) -> None:
                     },
                 ],
                 "thumbnail": {
-                    "url": "https://static.atlasacademy.io/JP/External/FGOPoker/316.png"
+                    "url": "https://www.fate-go.jp/manga_fgo3/images/commnet_chara02.png"
                 }
             }
         ],
@@ -124,18 +124,18 @@ def shop(item: str, quantity: str) -> None:
         "content": None,
         "embeds": [
             {
-                "title": "FGO Blue Fruit Exchange - " + main.fate_region,
-                "description": f"Received Blue Fruit.",
+                "title": "Da Vinci's Shop Blue Fruit Exchange - " + main.fate_region,
+                "description": f"Received {quantity}Blue Fruit(s).",
                 "color": 5814783,
                 "fields": [
                     {
-                        "name": f"Shop",
-                        "value": f"Spent {40 * quantity} AP to buy {quantity}x {item}",
+                        "name": f"Da Vinci's Shop Blue Fruit Exchange",
+                        "value": f"-{40 * quantity}AP in exchange of {quantity}x {item}",
                         "inline": False
                     }
                 ],
                 "thumbnail": {
-                    "url": "https://www.fate-go.jp/manga_fgo2/images/commnet_chara10.png"
+                    "url": "https://www.fate-go.jp/manga_fgo3/images/commnet_chara10.png"
                 }
             }
         ],
@@ -163,7 +163,7 @@ def drawFP(servants, missions) -> None:
 
         for servant in servants:
             svt = svt_dict[servant.objectId]
-            message_servant += f"`{svt['name']}` "
+            message_servant += f"`{svt['name']}`\n "
 
     if(len(missions) > 0):
         for mission in missions:
@@ -184,7 +184,7 @@ def drawFP(servants, missions) -> None:
                     }
                 ],
                 "thumbnail": {
-                    "url": "https://www.fate-go.jp/manga_fgo/images/commnet_chara02_rv.png"
+                    "url": "https://www.fate-go.jp/manga_fgo3/images/commnet_chara04.png"
                 }
             }
         ],
