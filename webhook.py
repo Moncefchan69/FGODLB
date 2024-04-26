@@ -73,7 +73,7 @@ def topLogin(data: list) -> None:
                     },
                     {
                         "name": "Total Login Days",
-                        "value": f"Daily Login Streak of{login.login_days}Days /{login.total_days}Total Login Days",
+                        "value": f"{login.login_days} Days / {login.total_days} Days",
                         "inline": True
                     },
                     {
@@ -125,12 +125,12 @@ def shop(item: str, quantity: str) -> None:
         "embeds": [
             {
                 "title": "Da Vinci's Shop Blue Fruit Exchange - " + main.fate_region,
-                "description": f"Received {quantity}Blue Fruit(s).",
+                "description": f"Exchange Success.",
                 "color": 5814783,
                 "fields": [
                     {
-                        "name": f"Da Vinci's Shop Blue Fruit Exchange",
-                        "value": f"-{40 * quantity}AP in exchange of {quantity}x {item}",
+                        "name": f"Details",
+                        "value": f"Minus {40 * quantity} AP in exchange for 1x Blue Fruit",
                         "inline": False
                     }
                 ],
