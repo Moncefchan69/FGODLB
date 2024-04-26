@@ -20,7 +20,7 @@ on:
 jobs:
   run_scripts:
     runs-on: ubuntu-latest
-      python-version: '3.11'
+        python-version: '3.11'
 
     steps:
       - name: Set time zone
