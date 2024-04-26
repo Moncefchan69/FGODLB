@@ -33,7 +33,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r https://raw.githubusercontent.com/xdeadboy666x/FGODLB/main/requirements.txt
 
       - name: Execute script 1
         run: |
