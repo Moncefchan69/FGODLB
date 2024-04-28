@@ -58,7 +58,7 @@ class ParameterBuilder:
                 self.content_ += escaped_key + '=' + escaped_value
 
         temp += ':' + self.secret_key_
-        self.content_ += '&authCode=' + \
+        self.content_ += '&authCode=' +
             quote_plus(base64.b64encode(
                 hashlib.sha1(temp.encode('utf-8')).digest()))
 
