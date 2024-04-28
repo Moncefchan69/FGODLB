@@ -234,20 +234,20 @@ class user:
         DataWebhook.append(login)
 
         if 'seqLoginBonus' in data['response'][0]['success']:
-            res += '*%s*\n`' % data['response'][0]['success']['seqLoginBonus'][0]['message']
+            bonus_message = data['response'][0]['success']['seqLoginBonus'][0]['message']
+
+            items = []
+            items_camp_bonus = []
+
             for i in data['response'][0]['success']['seqLoginBonus'][0]['items']:
-                res += "%s X %s\n" % (i['name'], i['num'])
+                items.append(f'{i["name"]} x{i["num"]}')
+
             if 'campaignbonus' in data['response'][0]['success']:
-                for cp in data['response'][0]['success']['campaignbonus']:
-                    if 'banners' in cp['script']:
-                        res += '`*%s*\n*%s*\n%s\n`' % (
-                            cp['name'],
-                            cp['detail'],
-                            cp['script']['banners'][0]['bannerUrl']
-                    )
-                    for i in cp['items']:
-                        res += "%s X %s\n" % (i['name'], i['num'])
-                        
+                bonus_name = data['response'][0]['success']['campaignbonus'][0]['name']
+                bonus_detail = data['response'][0]['success']['campaignbonus'][0]['detail']
+
+                for i in data['response'][0]['success']['campaignbonus'][0]['items']:
+                    items_camp_bonus.append(f'{i["name"]} x{i["num"]}')
             else:
                 bonus_name = None
                 bonus_detail = None
@@ -526,6 +526,6 @@ class user:
     
             responses = data['response']
 
-            main.logger.info(f"Received Rewards")
+            main.logger.info(f"Received rewards")
         else:
             main.logger.info(f"No rewards at the moment")
