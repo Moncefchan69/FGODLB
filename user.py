@@ -132,12 +132,11 @@ class user:
     def topLogin(self):
         DataWebhook = []  # This data will be use in discord webhook!
 
-        lastAccessTime = self.builder_.parameter_list_[5][1]
-        userState = (-int(lastAccessTime) >>
-                     2) ^ self.user_id_ & fgourl.data_server_folder_crc_
+        lastAccessTime = self.builder_.parameter_list_[5][1]  # Assuming it's at index 5
+        userState = (-int(lastAccessTime) >> 2) ^ self.user_id_ & fgourl.data_server_folder_crc_
 
         self.builder_.AddParameter('assetbundleFolder', fgourl.asset_bundle_folder_)
-        self.builder_.AddParameter('deviceInfo', 'HUAWEI MAR-LX3Bm / Android OS 10 / API-29 (HUAWEIMAR-L03B/10.0.0.274C69)')
+        self.builder_.AddParameter('deviceInfo', 'HUAWEI MAR-LX3Bm / Android OS 10 / API-29')
         self.builder_.AddParameter('isTerminalLogin', '1')
         self.builder_.AddParameter('userState', str(userState))
 
@@ -266,11 +265,10 @@ class user:
         DataWebhook = []  # This data will be use in discord webhook!
 
         lastAccessTime = self.builder_.parameter_list_[5][1]
-        userState = (-int(lastAccessTime) >>
-                     2) ^ self.user_id_ & fgourl.data_server_folder_crc_
+        userState = (-int(lastAccessTime) >> 2) ^ self.user_id_ & fgourl.data_server_folder_crc_
 
         self.builder_.AddParameter('assetbundleFolder', fgourl.asset_bundle_folder_)
-        self.builder_.AddParameter('deviceInfo', 'HUAWEI MAR-LX3Bm / Android OS 10 / API-29 (HUAWEIMAR-L03B/10.0.0.274C69)')
+        self.builder_.AddParameter('deviceInfo', 'HUAWEI MAR-LX3Bm / Android OS 10 / API-29')
         self.builder_.AddParameter('isTerminalLogin', '1')
         self.builder_.AddParameter('userState', str(userState))
 
