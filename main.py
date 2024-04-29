@@ -6,7 +6,8 @@ import fgourl
 import user
 import coloredlogs
 import logging
-from datetime import datetime  # Don't forget to import datetime!
+from datetime import datetime
+from croniter import croniter  # Import croniter module
 
 # Environment Variables
 userIds = os.environ['userIds'].split(',')
@@ -50,7 +51,23 @@ def get_latest_verCode():
     return response_data['verCode']
 
 
+def configure_logging():
+    logging.basicConfig(level=logging.DEBUG)
+    instance = YourInstanceClass()  # Initialize instance
+    logging.debug("Calling topLogin in main")
+    res = instance.topLogin()  # Check if this is called
+    logging.debug(f"topLogin result: {res}")
+
+
+def retrieve_environment_variables():
+	global userIds, authKeys, secretKeys, fate_region, webhook_discord_url, blue_apple_cron, UA
+	pass
+
+
 def main():
+    configure_logging()  # Call the configure_logging function
+    retrieve_environment_variables()  # Call the retrieve_environment_variables function
+
     if userNums == authKeyNums and userNums == secretKeyNums:
         logger.info('Fetching Game Data')
         fgourl.set_latest_assets()
@@ -59,7 +76,7 @@ def main():
             try:
                 instance = user.user(userIds[i], authKeys[i], secretKeys[i])
                 time.sleep(3)
-                logger.info('Login in...')
+                logger.info('Logging in...')
                 instance.topLogin()
                 time.sleep(2)
                 instance.topHome()
