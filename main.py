@@ -17,11 +17,11 @@ fate_region = os.environ['fateRegion']
 webhook_discord_url = os.environ['webhookDiscord']
 blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
 
-UA = os.environ['UserAgent']
+UA = os.environ.get('UserAgent')  # Use get() to avoid KeyError if 'UserAgent' is not set
 
 if UA:
     fgourl.user_agent_ = UA
-
+    
 userNums = len(userIds)
 authKeyNums = len(authKeys)
 secretKeyNums = len(secretKeys)
