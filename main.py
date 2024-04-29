@@ -11,23 +11,21 @@ def configure_logging():
     logging.basicConfig(level=logging.DEBUG)
 
 def retrieve_environment_variables():
-    global userIds, authKeys, secretKeys, userNums, authKeyNums, secretKeyNums, UA
     userIds = os.environ['userIds'].split(',')
     authKeys = os.environ['authKeys'].split(',')
     secretKeys = os.environ['secretKeys'].split(',')
-    userNums = len(userIds)
-    authKeyNums = len(authKeys)
-    secretKeyNums = len(secretKeys)
-
     fate_region = os.environ['fateRegion']
     webhook_discord_url = os.environ['webhookDiscord']
     blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
-
+    
     UA = os.environ['UserAgent']
-
+    
     if UA:
-        fgourl.user_agent_ = UA
+    fgourl.user_agent_ = UA
 
+userNums = len(userIds)
+authKeyNums = len(authKeys)
+secretKeyNums = len(secretKeys)
 
 logger = logging.getLogger("FGO Daily Login")
 coloredlogs.install(fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
