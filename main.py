@@ -18,13 +18,16 @@ def retrieve_environment_variables():
     userNums = len(userIds)
     authKeyNums = len(authKeys)
     secretKeyNums = len(secretKeys)
+
     fate_region = os.environ['fateRegion']
     webhook_discord_url = os.environ['webhookDiscord']
     blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
-    
+
     UA = os.environ['UserAgent']
+
     if UA:
         fgourl.user_agent_ = UA
+
 
 logger = logging.getLogger("FGO Daily Login")
 coloredlogs.install(fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
