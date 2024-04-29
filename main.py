@@ -20,7 +20,7 @@ def retrieve_environment_variables():
     secretKeyNums = len(secretKeys)
     fgourl.ver_code_ = os.environ['verCode']
     fate_region = os.environ['fateRegion']
-    webhook_discord_url = os.environ['webhookDiscord')
+    webhook_discord_url = os.environ['webhookDiscord']
     blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
     
     UA = os.environ['UserAgent']
