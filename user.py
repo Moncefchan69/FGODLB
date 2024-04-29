@@ -116,11 +116,8 @@ class Bonus:
 
 class user:
     def __init__(self, user_id: str, auth_key: str, secret_key: str):
-        if not user_id.isdigit():
-            raise ValueError("user_id must be a valid integer string")
-        
         self.name_ = ''
-        self.user_id_ = int(user_id)
+        self.user_id_ = (int)(user_id)
         self.s_ = fgourl.NewSession()
         self.builder_ = ParameterBuilder(user_id, auth_key, secret_key)
 
@@ -132,11 +129,13 @@ class user:
     def topLogin(self):
         DataWebhook = []  # This data will be use in discord webhook!
 
-        lastAccessTime = self.builder_.parameter_list_[5][1]  # Assuming it's at index 5
-        userState = (-int(lastAccessTime) >> 2) ^ self.user_id_ & fgourl.data_server_folder_crc_
+        lastAccessTime = self.builder_.parameter_list_[5][1]
+        userState = (-int(lastAccessTime) >>
+                     2) ^ self.user_id_ & fgourl.data_server_folder_crc_
 
-        self.builder_.AddParameter('assetbundleFolder', fgourl.asset_bundle_folder_)
-        self.builder_.AddParameter('deviceInfo', 'HUAWEI MAR-LX3Bm / Android OS 10 / API-29')
+        self.builder_.AddParameter(
+            'assetbundleFolder', fgourl.asset_bundle_folder_)
+        self.builder_.AddParameter('deviceInfo', 'Google Pixel 5 / Android OS 14 / API-34 (UP1A.231105.001/10817346)')
         self.builder_.AddParameter('isTerminalLogin', '1')
         self.builder_.AddParameter('userState', str(userState))
 
@@ -265,10 +264,12 @@ class user:
         DataWebhook = []  # This data will be use in discord webhook!
 
         lastAccessTime = self.builder_.parameter_list_[5][1]
-        userState = (-int(lastAccessTime) >> 2) ^ self.user_id_ & fgourl.data_server_folder_crc_
+        userState = (-int(lastAccessTime) >>
+                     2) ^ self.user_id_ & fgourl.data_server_folder_crc_
 
-        self.builder_.AddParameter('assetbundleFolder', fgourl.asset_bundle_folder_)
-        self.builder_.AddParameter('deviceInfo', 'HUAWEI MAR-LX3Bm / Android OS 10 / API-29')
+        self.builder_.AddParameter(
+            'assetbundleFolder', fgourl.asset_bundle_folder_)
+        self.builder_.AddParameter('deviceInfo', 'Google Pixel 5 / Android OS 14 / API-34 (UP1A.231105.001/10817346)')
         self.builder_.AddParameter('isTerminalLogin', '1')
         self.builder_.AddParameter('userState', str(userState))
 
@@ -482,7 +483,7 @@ class user:
             f'{fgourl.server_addr_}/present/list?_userId={self.user_id_}')
         
         responses = data['response']
-        main.logger.info(f"Received rewards!")
+        main.logger.info(f"读取礼物盒!")
 
     def lq002(self):
          # https://game.fate-go.jp/present/receive?_userId=
@@ -498,7 +499,7 @@ class user:
         with open('JJM.json', 'w') as f:
             json.dump(present_ids, f, ensure_ascii=False, indent=4)
 
-        main.logger.info(f"No rewards at the moment")
+        main.logger.info(f"解析完成!")
 
         time.sleep(1)
 
@@ -521,6 +522,6 @@ class user:
     
             responses = data['response']
 
-            main.logger.info(f"Received rewards")
+            main.logger.info(f"领取成功!")
         else:
-            main.logger.info(f"No rewards at the moment")
+            main.logger.info(f"没有物品可领取!")
