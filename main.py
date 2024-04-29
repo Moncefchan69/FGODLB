@@ -18,9 +18,9 @@ def retrieve_environment_variables():
     webhook_discord_url = os.environ['webhookDiscord']
     blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
     
-    UA = os.environ['UserAgent']
+UA = os.environ['UserAgent']
     
-    if UA:
+if UA:
     fgourl.user_agent_ = UA
 
 userNums = len(userIds)
