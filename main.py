@@ -7,22 +7,25 @@ import user
 import coloredlogs
 import logging
 
-# Environment Variables
-userIds = os.environ['userIds'].split(',')
-authKeys = os.environ['authKeys'].split(',')
-secretKeys = os.environ['secretKeys'].split(',')
-fate_region = os.environ['fateRegion']
-webhook_discord_url = os.environ['webhookDiscord']
-blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
+def configure_logging():
+    logging.basicConfig(level=logging.DEBUG)
 
-UA = os.environ['UserAgent']
-
-if UA:
-    fgourl.user_agent_ = UA
-
-userNums = len(userIds)
-authKeyNums = len(authKeys)
-secretKeyNums = len(secretKeys)
+def retrieve_environment_variables():
+    global userIds, authKeys, secretKeys, userNums, authKeyNums, secretKeyNums, UA
+    userIds = os.environ['userIds'].split(',')
+    authKeys = os.environ['authKeys'].split(',')
+    secretKeys = os.environ['secretKeys'].split(',')
+    userNums = len(userIds)
+    authKeyNums = len(authKeys)
+    secretKeyNums = len(secretKeys)
+    fgourl.ver_code_ = os.environ['verCode']
+    fate_region = os.environ['fateRegion']
+    webhook_discord_url = os.environ['webhookDiscord')
+    blue_apple_cron = os.environ.get("MAKE_BLUE_APPLE")
+    
+    UA = os.environ['UserAgent']
+    if UA:
+        fgourl.user_agent_ = UA
 
 logger = logging.getLogger("FGO Daily Login")
 coloredlogs.install(fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
@@ -41,7 +44,7 @@ def check_blue_apple_cron(instance):
 
 
 def get_latest_verCode():
-    endpoint = "https://raw.githubusercontent.com/xdeadboy666x/FGO-VerCode-extractor/NA/VerCode.json"
+    endpoint = "https://raw.githubusercontent.com/xdeadboy666x/FGO-VerCode-extractor/JP/VerCode.json"
 
     response = requests.get(endpoint).text
     response_data = json.loads(response)
@@ -50,6 +53,8 @@ def get_latest_verCode():
 
 
 def main():
+    configure_logging()
+    retrieve_environment_variables()
     if userNums == authKeyNums and userNums == secretKeyNums:
         logger.info('Fetching Game Data')
         fgourl.set_latest_assets()
