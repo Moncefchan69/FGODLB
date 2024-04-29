@@ -7,7 +7,7 @@ import user
 import coloredlogs
 import logging
 from datetime import datetime
-from croniter import croniter  # Import croniter module
+from croniter import croniter
 
 # Environment Variables
 userIds = os.environ['userIds'].split(',')
@@ -26,9 +26,20 @@ userNums = len(userIds)
 authKeyNums = len(authKeys)
 secretKeyNums = len(secretKeys)
 
+# Configure logging
 logger = logging.getLogger("FGO Daily Login")
-coloredlogs.install(fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
+logger.setLevel(logging.DEBUG)  # Set the root logger level to DEBUG
 
+# Console handler for printing logs to the console
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)  # Set the console handler level to DEBUG
+
+# Formatter for log messages
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+
+# Add the console handler to the logger
+logger.addHandler(console_handler)
 
 def check_blue_apple_cron(instance):
     if blue_apple_cron:
@@ -41,7 +52,6 @@ def check_blue_apple_cron(instance):
             instance.buyBlueApple(1)
             time.sleep(2)
 
-
 def get_latest_verCode():
     endpoint = "https://raw.githubusercontent.com/xdeadboy666x/FGO-VerCode-extractor/JP/VerCode.json"
 
@@ -50,24 +60,7 @@ def get_latest_verCode():
 
     return response_data['verCode']
 
-
-def configure_logging():
-    logging.basicConfig(level=logging.DEBUG)
-    instance = YourInstanceClass()  # Initialize instance
-    logging.debug("Calling topLogin in main")
-    res = instance.topLogin()  # Check if this is called
-    logging.debug(f"topLogin result: {res}")
-
-
-def retrieve_environment_variables():
-	global userIds, authKeys, secretKeys, fate_region, webhook_discord_url, blue_apple_cron, UA
-	pass
-
-
 def main():
-    configure_logging()  # Call the configure_logging function
-    retrieve_environment_variables()  # Call the retrieve_environment_variables function
-
     if userNums == authKeyNums and userNums == secretKeyNums:
         logger.info('Fetching Game Data')
         fgourl.set_latest_assets()
@@ -95,10 +88,11 @@ def main():
                         time.sleep(2)
                 except Exception as ex:
                     logger.error(ex)
+                    logger.debug("Exception occurred during blue apple exchange")
 
             except Exception as ex:
                 logger.error(ex)
-
+                logger.debug("Exception occurred during main loop iteration")
 
 if __name__ == "__main__":
     main()
