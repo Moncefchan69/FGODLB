@@ -116,8 +116,11 @@ class Bonus:
 
 class user:
     def __init__(self, user_id: str, auth_key: str, secret_key: str):
+        if not user_id.isdigit():
+            raise ValueError("user_id must be a valid integer string")
+        
         self.name_ = ''
-        self.user_id_ = (int)(user_id)
+        self.user_id_ = int(user_id)
         self.s_ = fgourl.NewSession()
         self.builder_ = ParameterBuilder(user_id, auth_key, secret_key)
 
