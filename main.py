@@ -69,9 +69,25 @@ def main():
             try:
                 instance = user.user(userIds[i], authKeys[i], secretKeys[i])
                 time.sleep(3)
-                logger.info('Logging in...')
-                instance.topLogin()
-                time.sleep(2)
+                
+                # Retry login if initial login fails due to server error
+                retry_count = 3
+                while retry_count > 0:
+                    logger.info('Logging in...')
+                    try:
+                        instance.topLogin()
+                        break  # Login successful, exit retry loop
+                    except Exception as ex:
+                        logger.error(f'Login attempt failed: {ex}')
+                        logger.info(f'Retrying login ({retry_count} attempts left)')
+                        retry_count -= 1
+                        time.sleep(2)
+                
+                if retry_count == 0:
+                    logger.error('Login failed after multiple attempts')
+                    continue  # Skip to the next user if login fails
+
+                logger.info('Login successful')
                 instance.topHome()
                 time.sleep(2)
                 instance.lq001()
