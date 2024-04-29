@@ -5,6 +5,7 @@ import json
 import fgourl
 import user
 import coloredlogs
+import logging
 
 # Environment Variables
 userIds = os.environ['userIds'].split(',')
@@ -40,7 +41,7 @@ def check_blue_apple_cron(instance):
 
 
 def get_latest_verCode():
-    endpoint = "https://raw.githubusercontent.com/xdeadboy666x/FGO-VerCode-extractor/NA/VerCode.json"
+    endpoint = "https://raw.githubusercontent.com/xdeadboy666x/FGO-VerCode-extractor/JP/VerCode.json"
 
     response = requests.get(endpoint).text
     response_data = json.loads(response)
