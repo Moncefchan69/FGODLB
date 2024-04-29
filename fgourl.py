@@ -19,7 +19,7 @@ data_server_folder_crc_ = 0
 server_addr_ = 'https://game.fate-go.jp'
 github_token_ = ''
 github_name_ = ''
-user_agent_ = UA
+user_agent_ = 'UserAgent'
 
 
 # ==== User Info ====
